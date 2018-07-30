@@ -1,0 +1,75 @@
+<div class="left">
+        <form #frm = "ngForm">
+           <div class="form-group">
+             <label for="email" >Email address:</label>
+             <input type="email" #emailClear name="email" #emailValid = "ngModel" 
+             ngModel class="form-control" id="email"
+             [value]="searchValue"
+             required 
+             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
+           </div>
+           <div  *ngIf = "emailValid.touched && emailValid.invalid" 
+           class="alert alert-danger">
+            <div class="width" *ngIf = "emailValid.errors?.required" >
+                       Required
+            </div>
+            <div class="width" [hidden] = "!emailValid.hasError('pattern')" >
+                        Not a Valid email
+            </div>
+           </div>
+           <div class="form-group">
+               <label for="password">Password:</label>
+               <input type="password" ngModel class="form-control" 
+                #passwordValid = "ngModel"  name="password" id="password"
+                 [value]="searchValue1"
+                required 
+                pattern="^(?=.*[A-Za-z])(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8}$"
+             >
+            </div>
+            <div  *ngIf = "passwordValid.touched && passwordValid.invalid" 
+           class="alert alert-danger">
+                   <div class="width" *ngIf = "passwordValid.errors?.required" >
+                       Required
+                   </div>
+                   <div class="width" *ngIf = "passwordValid.errors?.pattern">
+                       Password must be 8 character long with at least one
+                        character and one special character
+                    </div>
+           </div>
+           <div  class="form-group">
+              <label>Choices:</label>
+               <select ngModel name="choice"  #choiceValid = "ngModel"  
+               class="form-control" required>
+                   <option  value="Basic" >Basic</option>
+                   <option value="Advanced" selected="" >Advanced</option>
+                   <option value="Pro" >Pro</option>
+               </select>
+           </div>
+           <div  *ngIf = "choiceValid.touched && choiceValid.invalid" 
+           class="alert alert-danger">
+                   <div class="width" *ngIf = "choiceValid.errors?.required" >
+                       Required
+                   </div>
+                   <div class="width" *ngIf = "choiceValid.errors?.pattern"  >
+                       Password must be 8 character long with at least one
+                        character and one special character
+                    </div>
+           </div>
+           <div class="previous">
+               <button type="button" class="btn btn-primary btn-lg"
+                [disabled] = "frm.invalid" (click) = "addPost(frm)" 
+                routerLink="/Data">Submit</button>
+           </div>
+       
+           <div class="next">
+               <button type="reset" class="btn btn-basic btn-lg"
+                (click) = "clickMethod()">Clear</button>
+           </div>
+         </form>
+       </div>
+
+       <router-outlet></router-outlet>
+
+
+
+  

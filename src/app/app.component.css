@@ -1,0 +1,22 @@
+    .previous {
+    margin-top: 40px;
+    }
+
+    input, select {
+        width: 50%;
+    }
+    
+    .next {
+    margin-top: -48px;
+    margin-left: 150px;
+    }
+
+    .left {
+        margin-top: 50px;
+        margin-left: 250px;
+    }
+
+    .width {
+       margin-right: 500px;
+       width: 50%;
+    }
